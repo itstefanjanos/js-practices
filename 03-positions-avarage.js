@@ -19,7 +19,7 @@ function calculateNumberOfCommonPositions(firstWord, secondWord) {
 
 function posAverage(wordListString) {
     const words = wordListString.split(', ');
-    const combinationsOfWords = (words.length * (words.length - 1))/2;
+    const combinationsOfWords = (words.length * (words.length - 1)) / 2;
     let numberOfCommonPositions = 0;
     
     for (
@@ -33,8 +33,8 @@ function posAverage(wordListString) {
             secondWordIndex++
         ) {
             numberOfCommonPositions += calculateNumberOfCommonPositions(
-            words[firstWordIndex], 
-            words[secondWordIndex]
+                words[firstWordIndex], 
+                words[secondWordIndex]
             );
       }
     }

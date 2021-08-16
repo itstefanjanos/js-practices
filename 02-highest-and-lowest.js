@@ -2,6 +2,6 @@
 
 function highAndLow(numbers){
     const sortedNumbers = numbers.split(' ').map(numberString => +numberString)
-      .sort((firstNumber, secondNumber) => firstNumber - secondNumber);
+        .sort((firstNumber, secondNumber) => firstNumber - secondNumber);
     return `${sortedNumbers[sortedNumbers.length - 1]} ${sortedNumbers[0]}`
-  }
+}

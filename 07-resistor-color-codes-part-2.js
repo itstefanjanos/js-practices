@@ -7,10 +7,10 @@ function encodeResistorColors(ohmsString) {
         '3': 'orange', '4': 'yellow', '5': 'green', 
         '6': 'blue', '7': 'violet', '8': 'gray', '9': 'white'};
     const exponentValuesOfUnitPrefix = {
-        'm': -3, //milli
-        '': 0,  //without unit prefix
-        'k': 3, //kilo
-        'M': 6 //mega
+        'm': -3, // milli
+        '' :  0, // without unit prefix
+        'k':  3, // kilo
+        'M':  6  // mega
     };
 
     const preprcessedValueAndUnit = /(?<valueWithoutUnitPrefix>\d+(?:\.\d)?)(?<unitPrefix>[mkM]?) ohms?/
