@@ -24,7 +24,7 @@ const cities = [
   }
 ]
   
-function getNamesOfCitiesMoreThanTwoHundredTousandPeopleOrderedByPopulationAsc(cities) {
+function getTheMostPopulatedCities(cities) {
     return cities.filter(city => city.population > 200000)
         .sort((firstComperableCity, secondComperableCity) => 
             firstComperableCity.population - secondComperableCity.population)
@@ -32,5 +32,5 @@ function getNamesOfCitiesMoreThanTwoHundredTousandPeopleOrderedByPopulationAsc(c
         .join(', ');
 }
 
-console.log(getNamesOfCitiesMoreThanTwoHundredTousandPeopleOrderedByPopulationAsc(cities));
+console.log(getTheMostPopulatedCities(cities));
 //Expected result: // Kyiv, Budapest, Paris, New-York

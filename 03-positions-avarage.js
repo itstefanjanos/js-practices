@@ -1,20 +1,10 @@
 // https://www.codewars.com/kata/59f4a0acbee84576800000af/javascript
 
 function calculateNumberOfCommonPositions(firstWord, secondWord) {
-    let numberOfCommonPositions = 0;
-    for (
-        let characterIndexSelectedForCompare = 0; 
-        characterIndexSelectedForCompare < firstWord.length; 
-        characterIndexSelectedForCompare++
-    ) {
-        if (
-            firstWord[characterIndexSelectedForCompare] == 
-            secondWord[characterIndexSelectedForCompare]
-        ) {
-            numberOfCommonPositions++;
-        }
-    }
-    return numberOfCommonPositions;
+    const secondWordCharacters = secondWord.split('');
+    return firstWord.split('').reduce(
+      (numberOfCommonPositions, currentCharOfFirstWord, indexOfChar) => 
+        numberOfCommonPositions += currentCharOfFirstWord === secondWordCharacters[indexOfChar], 0);
 }
 
 function posAverage(wordListString) {
