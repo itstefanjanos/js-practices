@@ -6,7 +6,7 @@ class Person {
         this.name = name;
     }
     greet(yourName) {
-        return "Hello " + yourName + ", my name is " + this.name;
+        return `Hello ${yourName}, my name is ${this.name}`;
     }
 }
 
@@ -15,7 +15,7 @@ class Person {
 function Person(name) {
     this.name = name;
     function greet(yourName) {
-        return "Hello " + yourName + ", my name is " + this.name;
+        return `Hello ${yourName}, my name is ${this.name}`;
     }
     return {
         name: this.name, 
