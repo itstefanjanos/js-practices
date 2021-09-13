@@ -94,4 +94,8 @@
 
     Usage of Promise methods is allowed in this case.
 
- 
+ ## 8. ES6+
+21. [Unique In Order](https://www.codewars.com/kata/54e6533c92449cc251001667/javascript)
+22. [Duplicates. Duplicates Everywhere.](https://www.codewars.com/kata/5e8dd197c122f6001a8637ca/javascript)
+23. [Highest Rank Number in an Array](https://www.codewars.com/kata/5420fc9bb5b2c7fd57000004/javascript)
+24. ["this" is an other problem](https://www.codewars.com/kata/547f1a8d4a437abdf800055c/javascript)
