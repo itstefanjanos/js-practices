@@ -36,11 +36,17 @@
 
         const sizeXAxis = +document.getElementById('size-x-axis').value === 0 ? 4 : document.getElementById('size-x-axis').value,
               sizeYAxis = +document.getElementById('size-y-axis').value === 0 ? 4 : document.getElementById('size-y-axis').value,
-              size = Math.floor(sizeXAxis * sizeYAxis / 2);
+              size = Math.floor(sizeXAxis * sizeYAxis / 2), 
+              numberOfCards = size * 2;
         document.getElementById('size-x-axis').value = sizeXAxis;
         document.getElementById('size-y-axis').value = sizeYAxis;
 
-        const limit = (+document.forms[0].elements.timeLimit.value === 1) ? Math.round(20/12*size**2 + 2*size - 3)*1000 : 0;
+
+        const limit = (+document.forms[0].elements.timeLimit.value === 1) 
+            ? Math.round(0.0039 * numberOfCards**3
+                - 0.1399 * numberOfCards**2
+                + 11 * numberOfCards
+                - 35.6765)*1000 : 0;
         
         containerElement.style.gridTemplateColumns = `repeat(${sizeXAxis}, 1fr)`;
         containerElement.style.gridTemplateRows = `repeat(${sizeYAxis}, 1fr)`;
