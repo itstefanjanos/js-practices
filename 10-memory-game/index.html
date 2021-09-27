@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory game</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <header class="main-header">
+        <h1 class="title">memory game</h1>
+
+        <section class="time-section">
+            
+        </section>
+    </header>
+    <main>
+        <section class="cards-container"></section>
+        <main class="game-controllers">
+            <h2 class="message"></h2>
+            <button class="start-button">Start</button>
+            <section class="game-size">
+                <label for="size-x-axis">X:</label>
+                <input id="size-x-axis" type="number" min="2" max="10" value="4"/>
+                <label for="size-y-axis">Y:</label>
+                <input id="size-y-axis" type="number" min="2" max="10" value="4"/>
+            </section>
+            <form class="time-limit-selector">
+                Time<br/>
+                <input type="radio" name="timeLimit" value="0" id="unlimited-time" checked/>
+                <label for="unlimited-time">Unlimited</label>
+                <input type="radio" name="timeLimit" value="1" id="limited-time"/>
+                <label for="limited-time">Limited</label>
+            </form>
+        </main>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
