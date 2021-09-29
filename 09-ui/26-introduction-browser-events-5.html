@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    .open-icon, .close-icon {
+      color: green;
+    }
+    .list-toggle {
+      cursor: pointer
+    }
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="list-toggle"><span class="close-icon">▶</span><span class="open-icon hide">▼</span> Sweeties (click me)!</div>
+  <ul class="hideable-list hide">
+    <li>Cake</li>
+    <li>Donut</li>
+    <li>Honey</li>
+  </ul>
+
+  <script>
+    const listToggle = document.querySelector('.list-toggle'),
+          hideableList = document.querySelector('.hideable-list'),
+          openIcon = document.querySelector('.open-icon'),
+          closeIcon = document.querySelector('.close-icon');
+    
+    listToggle.addEventListener('click', () => {
+      closeIcon.classList.toggle('hide');
+      openIcon.classList.toggle('hide');
+      hideableList.classList.toggle('hide');
+    });
+  </script>
+
+</body>
+</html>

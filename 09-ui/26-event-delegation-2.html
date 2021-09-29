@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<style>
+  .list-element:hover {
+    color: green;
+    cursor: pointer;
+  }
+</style>
+<body>
+
+  <ul class="tree" id="tree">
+    <li>Animals
+      <ul>
+        <li>Mammals
+          <ul>
+            <li>Cows</li>
+            <li>Donkeys</li>
+            <li>Dogs</li>
+            <li>Tigers</li>
+          </ul>
+        </li>
+        <li>Other
+          <ul>
+            <li>Snakes</li>
+            <li>Birds</li>
+            <li>Lizards</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Fishes
+      <ul>
+        <li>Aquarium
+          <ul>
+            <li>Guppy</li>
+            <li>Angelfish</li>
+          </ul>
+        </li>
+        <li>Sea
+          <ul>
+            <li>Sea trout</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    const tree = document.getElementById('tree'),
+          listItems = document.getElementsByTagName('li');
+    [...listItems].forEach(listItem => {
+      const elementContainer = document.createElement('span');
+      listItem.firstChild.data = listItem.firstChild.data.trim();
+      elementContainer.classList.add('list-element');
+      elementContainer.append(listItem.firstChild);
+      listItem.prepend(elementContainer);
+    });
+    tree.addEventListener('click', event => {
+      if (event.target.classList.contains('list-element')) {
+        if (event.target.nextSibling) {
+            event.target.nextSibling.hidden = !event.target.nextSibling.hidden;
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

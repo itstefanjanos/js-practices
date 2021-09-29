@@ -63,8 +63,6 @@ document.addEventListener('mouseover', event => {
     }
   });
 
-// 2 TODO: https://javascript.info/mousemove-mouseover-mouseout-mouseenter-mouseleave#smart-tooltip
-
 // https://javascript.info/mouse-drag-and-drop
 
 // 1
@@ -87,7 +85,6 @@ const slider = document.getElementById('slider'),
       return false;
     };
 
-// 2 TODO: https://javascript.info/mouse-drag-and-drop#drag-superheroes-around-the-field
 
 // https://javascript.info/keyboard-events
 

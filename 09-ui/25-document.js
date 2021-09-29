@@ -161,62 +161,10 @@ function createCalendar(elem, year, month) {
     }
   }
 
-  // 8
+// 8
 
-/*<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clock</title>
-    <style>
-      time {
-        display: block;
-      }
-      #hours {
-        color: red;
-      }
-      #minutes {
-        color: green;
-      }
-      #seconds {
-        color: blue;
-      }
-    </style>
-  </head>
-  <body>
-    <time><span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span></time>
-    <!-- click on this button calls clockStart() -->
-    <input type="button" onclick="clockStart()" value="Start">
+// 25-modifying-document-8.html
 
-    <!-- click on this button calls clockStop() -->
-    <input type="button" onclick="clockStop()" value="Stop">
-
-    <script>*/
-      let clockInterval;
-      function clockStart() {
-        refreshTime(new Date());
-        if (!clockInterval) {
-          clockInterval = setInterval(() => {
-          refreshTime(new Date());
-        }, 1000);
-        }
-      }
-      function clockStop() {
-        clearInterval(clockInterval);
-      }
-
-      function refreshTime(date) {
-        document.getElementById('hours').innerText = date.getHours().toString().padStart(2, '0');
-        document.getElementById('minutes').innerText = date.getMinutes().toString().padStart(2, '0');
-        document.getElementById('seconds').innerText = date.getSeconds().toString().padStart(2, '0');
-      }
-      
-      refreshTime(new Date());
-    /*</script>
-  </body>
-</html>*/
 
 // 9
 
