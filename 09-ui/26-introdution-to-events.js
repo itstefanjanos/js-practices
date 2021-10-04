@@ -73,8 +73,8 @@ document.addEventListener('mouseover', event => {
       tooltip.innerHTML = event.target.dataset.tooltip;
       tooltip.classList.add('tooltip');
       event.target.insertAdjacentElement('beforebegin', tooltip);
-      const top = Math.max(0, event.target.offsetTop - tooltip.offsetHeight - 5),
-            left = Math.max(0, event.target.offsetLeft + event.target.offsetWidth / 2 - tooltip.offsetWidth / 2);
+      const top = Math.max(0, event.target.offsetTop - tooltip.offsetHeight - 5);
+      const left = Math.max(0, event.target.offsetLeft + event.target.offsetWidth / 2 - tooltip.offsetWidth / 2);
       tooltip.style.top = `${top}px`;
       tooltip.style.left = `${left}px`;
     }

@@ -36,12 +36,12 @@
   </div>
 
   <script>
-    const field = document.getElementById('field'),
-          ball = document.getElementById('ball');
+    const field = document.getElementById('field');
+    const ball = document.getElementById('ball');
     
     field.addEventListener('click', event => {
-      const clickLeft = event.clientX - field.offsetLeft - field.clientLeft,
-            clickTop = event.clientY - field.offsetTop - field.clientTop;
+      const clickLeft = event.clientX - field.offsetLeft - field.clientLeft;
+      const clickTop = event.clientY - field.offsetTop - field.clientTop;
       ball.style.left = `${Math.max(0, Math.min(clickLeft - ball.width / 2, field.clientWidth - ball.width))}px`;
       ball.style.top = `${Math.max(0, Math.min(clickTop - ball.height / 2, field.clientHeight - ball.height))}px`;
     });

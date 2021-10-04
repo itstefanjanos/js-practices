@@ -13,24 +13,24 @@ document.getElementById('genres').lastElementChild.selected = true;
 
 // 1
 
-const view = document.getElementById('view'),
-          viewTempContainer = document.createElement('div');
-    view.addEventListener('click', event => {
-      const textArea = document.createElement('textarea'),
-            blurEventHandler = event => {
-              view.innerHTML = event.target.value;
-              event.target.insertAdjacentElement('afterend', view);
-              event.target.remove();
-            }
-      textArea.value = view.innerHTML;
+const view = document.getElementById('view');
+const viewTempContainer = document.createElement('div');
+view.addEventListener('click', event => {
+  const textArea = document.createElement('textarea');
+  const blurEventHandler = event => {
+          view.innerHTML = event.target.value;
+          event.target.insertAdjacentElement('afterend', view);
+          event.target.remove();
+        };
+  textArea.value = view.innerHTML;
 
-      textArea.classList.add('edit');
+  textArea.classList.add('edit');
 
-      view.insertAdjacentElement('afterend', textArea);
-      viewTempContainer.append(view);
-      textArea.focus();
-      textArea.addEventListener('blur', blurEventHandler);
-    });
+  view.insertAdjacentElement('afterend', textArea);
+  viewTempContainer.append(view);
+  textArea.focus();
+  textArea.addEventListener('blur', blurEventHandler);
+});
 
 // 2
 
@@ -80,65 +80,66 @@ const mouse = document.getElementById('mouse');
 
 // 1
 
-const form = document.forms.calculator,
-          moneyBefore = document.getElementById('money-before'),
-          moneyAfter = document.getElementById('money-after'),
-          heightAfter = document.getElementById('height-after'),
-          refreshCalculator = () => {
-            if (!form.money.value || !form.interest.value || !form.months.value) {
-              return;
-            }
-            const result = Math.round(form.money.value * (1 + form.interest.value / 100) ** (form.months.value / 12));
-            moneyBefore.innerText = form.money.value;
-            moneyAfter.innerText = result;
-            heightAfter.style.height = `${Math.round(result / form.money.value * 100)}px`;
-          };
+  const form = document.forms.calculator;
+  const moneyBefore = document.getElementById('money-before');
+  const moneyAfter = document.getElementById('money-after');
+  const heightAfter = document.getElementById('height-after');
+  const refreshCalculator = () => {
+    if (!form.money.value || !form.interest.value || !form.months.value) {
+      return;
+    }
+    const result = Math.round(form.money.value * (1 + form.interest.value / 100) ** (form.months.value / 12));
+    moneyBefore.innerText = form.money.value;
+    moneyAfter.innerText = result;
+    heightAfter.style.height = `${Math.round(result / form.money.value * 100)}px`;
+  };
 
-    form.addEventListener('input', event => {
-      refreshCalculator();
-    });
+  form.addEventListener('input', event => {
     refreshCalculator();
+  });
+  refreshCalculator();
 
 // https://javascript.info/forms-submit
 
-const promptFormContainer = document.getElementById('prompt-form-container'),
-          showButton = document.getElementById('show-button'),
-          resetPrompt = (clickEvent, selectEvent) => {
-            promptFormContainer.hidden = true;
-            document.body.style.overflow = '';
-            promptFormContainer.removeEventListener('click', clickEvent);
-            promptFormContainer.removeEventListener('selectstart', selectEvent);
-          },
-          showPrompt = (messageHTML, callback) => {
-            const promptMessage = document.getElementById('prompt-message'),
-                  clickEvent = event => {
-                    event.preventDefault();
-                    if (event.target.tagName === 'INPUT' && event.target.type === 'submit' && document.forms[0].text.value) {
-                        callback(document.forms[0].text.value);
-                        resetPrompt(clickEvent, selectEvent);
-                    } else if (event.target.tagName === 'INPUT' &&event.target.value === 'Cancel') {
-                        callback(null);
-                        resetPrompt(clickEvent, selectEvent);
-                    }
-                  }, selectEvent = event => {
-                    if (event.target.nodeType === 1 && !event.target.closest('#prompt-form')) {
-                      event.preventDefault(clickEvent, selectEvent);
-                    }
-                  };
+const promptFormContainer = document.getElementById('prompt-form-container');
+const showButton = document.getElementById('show-button');
+const resetPrompt = (clickEvent, selectEvent) => {
+  promptFormContainer.hidden = true;
+  document.body.style.overflow = '';
+  promptFormContainer.removeEventListener('click', clickEvent);
+  promptFormContainer.removeEventListener('selectstart', selectEvent);
+};
+const showPrompt = (messageHTML, callback) => {
+  const promptMessage = document.getElementById('prompt-message');
+  const clickEvent = event => {
+    event.preventDefault();
+    if (event.target.tagName === 'INPUT' && event.target.type === 'submit' && document.forms[0].text.value) {
+        callback(document.forms[0].text.value);
+        resetPrompt(clickEvent, selectEvent);
+    } else if (event.target.tagName === 'INPUT' &&event.target.value === 'Cancel') {
+        callback(null);
+        resetPrompt(clickEvent, selectEvent);
+    }
+  };
+  const selectEvent = event => {
+    if (event.target.nodeType === 1 && !event.target.closest('#prompt-form')) {
+      event.preventDefault(clickEvent, selectEvent);
+    }
+  };
 
-            document.forms[0].text.focus();
-            promptFormContainer.hidden = false;
+  document.forms[0].text.focus();
+  promptFormContainer.hidden = false;
 
-            document.body.style.overflow = 'hidden';
-            promptMessage.innerHTML = messageHTML;
-            promptFormContainer.addEventListener('click', clickEvent);
-            promptFormContainer.addEventListener('selectstart', selectEvent);
-          };
-    promptFormContainer.hidden = true;
-    promptFormContainer.style.backgroundColor = '#aaa7';
+  document.body.style.overflow = 'hidden';
+  promptMessage.innerHTML = messageHTML;
+  promptFormContainer.addEventListener('click', clickEvent);
+  promptFormContainer.addEventListener('selectstart', selectEvent);
+};
+promptFormContainer.hidden = true;
+promptFormContainer.style.backgroundColor = '#aaa7';
 
-    showButton.addEventListener('click' , () => {
-      showPrompt("Enter something<br>...smart :)", function(value) {
-        alert(value);
-      });
-    });
+showButton.addEventListener('click' , () => {
+  showPrompt("Enter something<br>...smart :)", function(value) {
+    alert(value);
+  });
+});

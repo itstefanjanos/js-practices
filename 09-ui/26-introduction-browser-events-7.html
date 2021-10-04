@@ -28,10 +28,10 @@
   </div>
 
   <script>
-    const arrowLeft = document.getElementsByClassName('arrow-left')[0],
-          arrowRight = document.getElementsByClassName('arrow-right')[0],
-          carouselElements = document.querySelectorAll('.carousel li'),
-          carousel = document.getElementsByClassName('carousel')[0];
+    const arrowLeft = document.getElementsByClassName('arrow-left')[0];
+    const arrowRight = document.getElementsByClassName('arrow-right')[0];
+    const carouselElements = document.querySelectorAll('.carousel li');
+    const carousel = document.getElementsByClassName('carousel')[0];
     arrowLeft.addEventListener('click', () => {
       const margin = Math.max((carouselElements.length - 3) * -130, parseInt(getComputedStyle(carousel).marginLeft) - 390);
       console.log(margin);

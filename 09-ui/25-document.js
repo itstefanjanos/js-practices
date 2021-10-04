@@ -113,14 +113,14 @@ for (let listItem; listItem = prompt('content');) {
 function createTree(container, data) {
     const rootElement = document.createElement('ul');
     container.append(rootElement);
-    for(let [key, value] of Object.entries(data)) { 
+    Object.entries(data).forEach(([key, value]) => { 
         const keyElement = document.createElement('li');
         keyElement.innerText = key;
         rootElement.append(keyElement);
         if (Object.keys(value).length > 0) {
             createTree(keyElement, value);
         }
-    }
+    });
 }
 
 // 6
@@ -151,11 +151,14 @@ function createCalendar(elem, year, month) {
         rowElement.append(dayElement);
       } else {
         dayElement = document.createElement('td');
-        dayElement.innerText = (day - dayOfFirstDay - 7) < 0
-            ? '' 
-            : (day - dayOfFirstDay - 6) > daysInMounth 
-                ? '' 
-                : (day - dayOfFirstDay - 6);
+        if (day - dayOfFirstDay - 7 < 0) {
+          dayElement.innerText = ''; 
+        } else if (day - dayOfFirstDay - 6 > daysInMounth ) {
+          dayElement.innerText = ''; 
+        } else {
+          dayElement.innerText = day - dayOfFirstDay - 6;
+        }
+        
         rowElement.append(dayElement);
       }
     }
@@ -174,8 +177,8 @@ document.getElementById('one').insertAdjacentHTML('afterend', '<li>2</li><li>3</
 
   const tbody = document.getElementsByTagName('tbody')[0];
   const sortedRows = [...tbody.children].sort((firstRow, secondRow) => {
-      const firstName = firstRow.cells[0].innerText,
-            secondName = secondRow.cells[0].innerText;
+      const firstName = firstRow.cells[0].innerText;
+      const secondName = secondRow.cells[0].innerText;
       if (firstName < secondName) {
           return -1;
       }
@@ -228,8 +231,8 @@ div.remove();
 
 // 3
 
-const field = document.getElementById('field'),
-          ball = document.getElementById('ball');
+const field = document.getElementById('field');
+const ball = document.getElementById('ball');
     
     ball.style.top = `${(field.clientHeight - ball.height) / 2}px`;
     ball.style.left = `${(field.clientWidth - ball.width) / 2}px`;
@@ -259,13 +262,30 @@ function positionAt(anchor, position, elem) {
 
 // 4
 
+function calculateLeftPosition(position, coordinates, anchor, inOrOut, elem) {
+  if (position === 'top' || position === 'bottom') {
+    return coordinates.x;
+  } else {
+    return coordinates.x + anchor.offsetWidth - ((inOrOut === 'in') * elem.offsetWidth);
+  }
+}
+
+function calculateTopPosition(position, coordinates, anchor, inOrOut, elem) {
+  if (position === 'top') {
+    return coordinates.y - ((inOrOut === 'out') * elem.offsetHeight);
+  } else if (position === 'bottom'){
+    return coordinates.bottom - ((inOrOut === 'in') * elem.offsetHeight);
+  } else {
+    return coordinates.y;
+  }
+}
+
 function positionAt(anchor, positions, elem) {
   const [position,inOrOut] = positions.split('-');
   const coordinates = anchor.getBoundingClientRect();
   elem.style.left = 
-    `${(position === 'top' || position === 'bottom')?coordinates.x:coordinates.x + anchor.offsetWidth - ((inOrOut === 'in') * elem.offsetWidth)}px`;
+    `${calculateLeftPosition(position, coordinates, anchor, inOrOut, elem)}px`;
   elem.style.top = 
-    `${(position === 'top')?coordinates.y - ((inOrOut === 'out') * elem.offsetHeight):
-    (position === 'bottom')?coordinates.bottom - ((inOrOut === 'in') * elem.offsetHeight):coordinates.y}px`;
+    `${calculateTopPosition(position, coordinates, anchor, inOrOut, elem)}px`;
 }
 

@@ -49,8 +49,8 @@
   </ul>
 
   <script>
-    const tree = document.getElementById('tree'),
-          listItems = document.getElementsByTagName('li');
+    const tree = document.getElementById('tree');
+    const listItems = document.getElementsByTagName('li');
     [...listItems].forEach(listItem => {
       const elementContainer = document.createElement('span');
       listItem.firstChild.data = listItem.firstChild.data.trim();
@@ -59,10 +59,8 @@
       listItem.prepend(elementContainer);
     });
     tree.addEventListener('click', event => {
-      if (event.target.classList.contains('list-element')) {
-        if (event.target.nextSibling) {
-            event.target.nextSibling.hidden = !event.target.nextSibling.hidden;
-        }
+    if (event.target.classList.contains('list-element') && event.target.nextSibling) {
+          event.target.nextSibling.hidden = !event.target.nextSibling.hidden;
       }
     });
   </script>
