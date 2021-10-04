@@ -3,17 +3,18 @@
     const HOUR = 3600000;
     const MINUTE = 60000;
     const SECOND = 1000;
-    const getHoursFromTimecode = (milliseconds) => Math.floor(milliseconds / HOUR).toString().padStart(2, '0'); 
-    const getMinutesFromTimecode = (milliseconds) => Math.floor((milliseconds % HOUR) / MINUTE).toString().padStart(2, '0'); 
-    const getSecondsFromTimecode = (milliseconds) => Math.floor((milliseconds % MINUTE) / SECOND).toString().padStart(2, '0'); 
-    const getMillisecondsFromTimecode = (milliseconds) => (milliseconds % SECOND).toString().padStart(3, '0'); 
+    const calculateHoursFromTimecode = (milliseconds) => Math.floor(milliseconds / HOUR).toString().padStart(2, '0'); 
+    const calculateMinutesFromTimecode = (milliseconds) => Math.floor((milliseconds % HOUR) / MINUTE).toString().padStart(2, '0'); 
+    const calculateSecondsFromTimecode = (milliseconds) => Math.floor((milliseconds % MINUTE) / SECOND).toString().padStart(2, '0'); 
+    const calculateMillisecondsFromTimecode = (milliseconds) => (milliseconds % SECOND).toString().padStart(3, '0'); 
+    const calculateLimitSign = (limit) => limit !== 0?'-':'';
     const getTimeString = (milliseconds, limit = 0) => {
         const millisecondsToShow = Math.abs(limit === 0 ? milliseconds : limit - milliseconds);
-        return `${limit !== 0?'-':''}${
-            getHoursFromTimecode(millisecondsToShow)}:${
-            getMinutesFromTimecode(millisecondsToShow)}:${
-            getSecondsFromTimecode(millisecondsToShow)}.${
-            getMillisecondsFromTimecode(millisecondsToShow)}`
+        return `${calculateLimitSign(limit)}${
+            calculateHoursFromTimecode(millisecondsToShow)}:${
+            calculateMinutesFromTimecode(millisecondsToShow)}:${
+            calculateSecondsFromTimecode(millisecondsToShow)}.${
+            calculateMillisecondsFromTimecode(millisecondsToShow)}`
     }
     const addOrUpdateTimeElement = (timeElement, elapsed, limit = 0, caption, id, position) => {
         if (timeElement === null) {
