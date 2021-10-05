@@ -1,9 +1,9 @@
 let table = document.getElementById('bagua-table');
 
-const resetEvents = (table, {okButton, okEvent}, {cancelButton, cancelEvent}, clickEvent) => {
+const resetEvents = (table, ok, cancel, clickEvent) => {
   table.addEventListener('click', clickEvent);
-  okButton.removeEventListener('click', okEvent);
-  cancelButton.removeEventListener('click', cancelEvent);
+  ok.button.removeEventListener('click', ok.event);
+  cancel.button.removeEventListener('click', cancel.event);
 };
 
 const getEditableTextArea = ({offsetHeight, offsetWidth}, content) => {
