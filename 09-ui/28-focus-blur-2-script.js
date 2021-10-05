@@ -43,10 +43,8 @@ const getButtonAndEvent = (caption, target, getReturnText, getOkObject, getCance
 const getEditControls = (target, textArea, content, clickEvent) => {
   const editControls = document.createElement('div');
   editControls.classList.add('edit-controls');
-  let ok = null;
-  let cancel = null;
-  ok = getButtonAndEvent('ok', target, () => textArea.value, () => ok, () => cancel, clickEvent);
-  cancel = getButtonAndEvent('cancel', target, () => content, () => ok, () => cancel, clickEvent);
+  const ok = getButtonAndEvent('ok', target, () => textArea.value, () => ok, () => cancel, clickEvent);
+  const cancel = getButtonAndEvent('cancel', target, () => content, () => ok, () => cancel, clickEvent);
   editControls.append(ok.button);
   editControls.append(cancel.button);
   return editControls;
