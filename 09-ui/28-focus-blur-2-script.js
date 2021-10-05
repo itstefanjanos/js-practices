@@ -21,19 +21,19 @@ const replaceToTextArea = (target, textArea) => {
   target.append(textArea);
 };
 
-const resetElement = (target, innerHTML, ok, cancel) => {
+const resetElement = (target, innerHTML, ok, cancel, clickEvent) => {
   target.classList.remove('edit-td');
   target.innerHTML = innerHTML;
   resetEvents(table, ok, cancel, clickEvent);
 };
 
-const getButtonAndEvent = (caption, target, getReturnText, getOkObject, getCancelObject) => {
+const getButtonAndEvent = (caption, target, getReturnText, getOkObject, getCancelObject, clickEvent) => {
   const button = document.createElement('button');
   button.classList.add(`edit-${caption}`);
   button.innerText = caption.toUpperCase();
   
   const event = () => {
-    resetElement(target, getReturnText(), getOkObject(), getCancelObject());
+    resetElement(target, getReturnText(), getOkObject(), getCancelObject(), clickEvent);
   };
   
   button.addEventListener('click', event);
@@ -45,8 +45,8 @@ const getEditControls = (target, textArea, content, clickEvent) => {
   editControls.classList.add('edit-controls');
   let ok = null;
   let cancel = null;
-  ok = getButtonAndEvent('ok', target, () => textArea.value, () => ok, () => cancel);
-  cancel = getButtonAndEvent('cancel', target, () => content, () => ok, () => cancel);
+  ok = getButtonAndEvent('ok', target, () => textArea.value, () => ok, () => cancel, clickEvent);
+  cancel = getButtonAndEvent('cancel', target, () => content, () => ok, () => cancel, clickEvent);
   editControls.append(ok.button);
   editControls.append(cancel.button);
   return editControls;
